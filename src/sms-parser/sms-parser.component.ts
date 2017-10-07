@@ -4,9 +4,9 @@ declare let device;
 
 @Component({
   selector: 'sms-parser-app',
-  templateUrl: 'sms-parser-app.component.html'
+  templateUrl: 'sms-parser.component.html'
 })
-export class SmsParserAppComponent {
+export class SmsParserComponent {
   title = 'app works!';
 
 }
