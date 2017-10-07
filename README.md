@@ -2,6 +2,17 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
+## Build and run
+
+###### In sms-parser-app folder:
+1. `$ npm i`
+2. `$ ng build --target=production --environment=prod --output-path cordova/www/ --base-href .`   (note: remove `cordova/www` folder)
+3. `$ ng serve`
+###### In cordova folder:
+1. `$ cordova platform add browser` (browser or android)
+2. `$ cordova run browser` (browser or android)
+
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
