@@ -13,8 +13,6 @@ import {SmsParserRoutingModule} from "./sms-parser-routing.module";
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
     SmsModule,
     SmsParserRoutingModule
   ],
