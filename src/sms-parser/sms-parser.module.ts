@@ -1,11 +1,13 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 
 import {SmsParserComponent} from './sms-parser.component';
 import {SmsModule} from "./modules/sms/sms.module";
 import {SmsParserRoutingModule} from "./sms-parser-routing.module";
+import {ComponentsModule} from "./components/components.module";
+
+let Hammer = require("hammerjs/hammer");
+Hammer.defaults.touchAction = "pan-x pan-y";
 
 @NgModule({
   declarations: [
@@ -13,10 +15,16 @@ import {SmsParserRoutingModule} from "./sms-parser-routing.module";
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     SmsModule,
     SmsParserRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerGestureConfig
+    }
+  ],
   bootstrap: [SmsParserComponent]
 })
 export class SmsParserModule {

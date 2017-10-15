@@ -1,7 +1,14 @@
 import {RouterModule, Routes} from "@angular/router";
+import {NgModule} from "@angular/core";
 
 const routes: Routes = [
   {path: '', redirectTo: 'sms', pathMatch: 'full'}
 ];
 
-export const SmsParserRoutingModule = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+
+export class SmsParserRoutingModule {
+}
