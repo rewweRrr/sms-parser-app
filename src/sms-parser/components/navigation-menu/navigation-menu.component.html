@@ -1,0 +1,15 @@
+<div class="navigation-menu"
+     (swipeleft)="_openNavigationMenu(false)"
+     [class._opened]="_menuOpened">
+  <div class="navigation-menu__header">Меню</div>
+  <div class="navigation-menu__item"
+       [class._active]="_isCurrentPage('/sms/list')"
+       (tap)="_navigate(['/sms/list'])">
+    SMS List
+  </div>
+</div>
+<div class="navigation-menu__swipe"
+     (swiperight)="_openNavigationMenu(true)"
+     (tap)="_openNavigationMenu(false)"
+     (swipeleft)="_openNavigationMenu(false)">
+</div>

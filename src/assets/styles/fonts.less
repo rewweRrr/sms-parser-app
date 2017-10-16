@@ -1,0 +1,22 @@
+/* Fonts */
+@src-fonts: "../fonts";
+@font-basic: sans-serif;
+@font-name-text: 'Cuprum';
+
+@font-text: @font-name-text, @font-basic;
+
+.font-face(@file-name, @font-name, @font-weight: 400, @font-style: normal) {
+  @font-face {
+    font-family: "@{font-name}";
+    src: local(@font-name), url("@{src-fonts}/@{file-name}.ttf");// format('ttf');
+    font-weight: @font-weight;
+    font-style: @font-style;
+  }
+}
+
+.font-face(Cuprum-Regular, @font-name-text, 300);
+.font-face(Cuprum-Regular, @font-name-text, 400);
+.font-face(Cuprum-Italic, @font-name-text, 300, italic);
+.font-face(Cuprum-Italic, @font-name-text, 400, italic);
+.font-face(Cuprum-Bold, @font-name-text, 700);
+.font-face(Cuprum-BoldItalic, @font-name-text, 700, italic);
