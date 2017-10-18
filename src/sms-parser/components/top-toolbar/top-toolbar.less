@@ -1,14 +1,22 @@
+@top-toolbar-height: 60px;
+
 .top-toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 60px;
-  background: @color-top-toolbar;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 10px;
+  position: relative;
+  z-index: 1000;
+  height: @top-toolbar-height;
+
+  &__fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: @top-toolbar-height;
+    background: @color-top-toolbar;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+  }
 
   &__content {
     display: flex;
@@ -45,7 +53,7 @@
     position: fixed;
     height: 4px;
     left: 0;
-    top: 60px;
+    top: @top-toolbar-height;
     width: 100%;
     background: linear-gradient(to bottom, fade(@color-top-toolbar-shadow, 25%), fade(@color-top-toolbar-shadow, 0%));
   }
