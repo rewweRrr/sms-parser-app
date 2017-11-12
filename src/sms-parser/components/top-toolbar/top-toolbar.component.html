@@ -1,13 +1,15 @@
 <div class="top-toolbar">
-  <div class="top-toolbar__content-left"
-       (tap)="_openNavigationMenu()">
-    <svg class="top-toolbar__icon">
-      <use xlink:href="./assets/images/icons/hamburger_button.svg#hamburger_button"></use>
-    </svg>
+  <div class="top-toolbar__fixed">
+    <div class="top-toolbar__content-left"
+         (tap)="_openNavigationMenu()">
+      <svg class="top-toolbar__icon">
+        <use xlink:href="./assets/images/icons/hamburger_button.svg#hamburger_button"></use>
+      </svg>
+    </div>
+    <div class="top-toolbar__content">
+      <span class="top-toolbar__content-text">SMS list</span>
+    </div>
+    <div class="top-toolbar__content-right"></div>
   </div>
-  <div class="top-toolbar__content">
-    <span class="top-toolbar__content-text">SMS list</span>
-  </div>
-  <div class="top-toolbar__content-right"></div>
 </div>
 <div class="top-toolbar__shadow"></div>
