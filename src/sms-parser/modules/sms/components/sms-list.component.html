@@ -1,2 +1,9 @@
 <top-toolbar></top-toolbar>
-<div>{{_sms}}</div>
+
+<div>
+  <a *ngFor="let sms of allSmsList">
+    <div>
+      <h4>{{sms.body}}</h4>
+    </div>
+  </a>
+</div>

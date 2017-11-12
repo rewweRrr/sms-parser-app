@@ -2,8 +2,8 @@ import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {SmsListComponent} from "./components/sms-list.component";
 import {SmsRoutingModule} from "./sms-routing.module";
-import {TopToolbarComponent} from "../../components/top-toolbar/top-toolbar.component";
 import {ComponentsModule} from "../../components/components.module";
+import {SmsService} from "./sms.service";
 
 @NgModule({
   imports: [//alphabetic ordered
@@ -16,7 +16,9 @@ import {ComponentsModule} from "../../components/components.module";
   ],
   exports: [],
   providers: [//alphabetic ordered
+    SmsService
   ]
 })
+
 export class SmsModule {
 }
