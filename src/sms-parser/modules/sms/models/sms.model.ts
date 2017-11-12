@@ -4,5 +4,5 @@ export class SmsModel {
   body: string;
   date: Date;
   date_sent: Date;
-  read: number;
+  read: boolean;
 }
