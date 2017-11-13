@@ -7,12 +7,12 @@ import {SmsModel} from "../models/sms.model";
   templateUrl: 'sms-list.component.html'
 })
 export class SmsListComponent implements OnInit {
-  allSmsList: SmsModel[] = [];
+  _allSmsList: SmsModel[] = [];
 
   constructor(private smsService: SmsService) {
   }
 
   ngOnInit() {
-    this.smsService.getAllMessages().then(smsList => this.allSmsList = smsList);
+    this.smsService.getAllMessages().then(smsList => this._allSmsList = smsList);
   }
 }
