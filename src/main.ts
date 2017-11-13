@@ -7,4 +7,15 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(SmsParserModule);
+let bootstrap = () => {
+  platformBrowserDynamic().bootstrapModule(SmsParserModule);
+  document.removeEventListener("deviceready", bootstrap);
+};
+
+if (window["cordova"]) {
+  document.addEventListener("deviceready", bootstrap)
+} else {
+  bootstrap();
+}
+
+
