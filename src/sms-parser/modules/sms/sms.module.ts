@@ -4,6 +4,7 @@ import {SmsListComponent} from "./components/sms-list.component";
 import {SmsRoutingModule} from "./sms-routing.module";
 import {ComponentsModule} from "../../components/components.module";
 import {SmsService} from "./sms.service";
+import {SmsCardComponent} from "./components/sms-card.component";
 
 @NgModule({
   imports: [//alphabetic ordered
@@ -12,6 +13,7 @@ import {SmsService} from "./sms.service";
     SmsRoutingModule
   ],
   declarations: [//alphabetic ordered
+    SmsCardComponent,
     SmsListComponent
   ],
   exports: [],

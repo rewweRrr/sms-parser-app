@@ -1,9 +1,9 @@
 <top-toolbar></top-toolbar>
 
-<div>
-  <a *ngFor="let sms of _allSmsList">
-    <div>
-      <h4>{{sms.body}}</h4>
-    </div>
-  </a>
-</div>
+<sms-card *ngFor="let sms of _allSmsList"
+          [sms]="sms">
+</sms-card>
+
+<show-more *ngIf="_allSmsList?.length === _maxCount"
+           (onClickShowMore)="_increaseMaxCount()">
+</show-more>

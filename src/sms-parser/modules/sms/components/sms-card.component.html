@@ -1,0 +1,13 @@
+<div class="sms-card">
+  <div class="sms-card__header"
+       (tap)="_showTime = !_showTime">
+    <span class="sms-card__header-text">{{sms?.address}}</span>
+    <span class="sms-card__header-date">
+      {{_showTime ? (sms?.date | date: "hh:mm") : (sms?.date | date: "dd.MM.yy")}}
+    </span>
+  </div>
+  <div class="sms-card__content">
+    <span class="sms-card__content-text">{{sms?.body}}</span>
+  </div>
+  <div class="sms-card__footer"></div>
+</div>
