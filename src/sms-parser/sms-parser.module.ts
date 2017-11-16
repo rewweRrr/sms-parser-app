@@ -5,6 +5,7 @@ import {SmsParserComponent} from './sms-parser.component';
 import {SmsModule} from "./modules/sms/sms.module";
 import {SmsParserRoutingModule} from "./sms-parser-routing.module";
 import {ComponentsModule} from "./components/components.module";
+import {HttpModule} from "@angular/http";
 
 let Hammer = require("hammerjs/hammer");
 Hammer.defaults.touchAction = "pan-x pan-y";
@@ -16,6 +17,7 @@ Hammer.defaults.touchAction = "pan-x pan-y";
   imports: [
     BrowserModule,
     ComponentsModule,
+    HttpModule,
     SmsModule,
     SmsParserRoutingModule
   ],

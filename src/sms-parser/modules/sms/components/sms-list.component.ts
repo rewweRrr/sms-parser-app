@@ -1,13 +1,14 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {SmsService} from "../sms.service";
 import {SmsModel} from "../models/sms.model";
-import {PageUtils} from "../../../../common/page-utils";
+import {PageUtils} from "../../../../common/utils/page-utils";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'sms-list',
   templateUrl: 'sms-list.component.html'
 })
-export class SmsListComponent implements OnInit {
+export class SmsListComponent implements OnInit, OnDestroy {
 
   _allSmsList: SmsModel[] = [];
   _maxCount: number;
@@ -15,14 +16,19 @@ export class SmsListComponent implements OnInit {
   readonly _defaultMaxCount: number = 30;
 
   private scrollTop: number = 0;
+  private filteredListSubscription: Subscription;
 
   constructor(private smsService: SmsService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._maxCount = this._defaultMaxCount;
     this.scrollTop = 0;
     this.getFilteredList();
+  }
+
+  ngOnDestroy(): void {
+    this.filteredListSubscription && this.filteredListSubscription.unsubscribe();
   }
 
   _increaseMaxCount(): void {
@@ -32,11 +38,17 @@ export class SmsListComponent implements OnInit {
   }
 
   private getFilteredList(): void {
-    this.smsService.getFilteredMessages({maxCount: this._maxCount}).then((smsList) => {
+    this.filteredListSubscription && this.filteredListSubscription.unsubscribe();
+    this.filteredListSubscription = this.smsService.getFilteredMessages({maxCount: this._maxCount}).subscribe((smsList: SmsModel[]) => {
       this._allSmsList = smsList;
       setTimeout(() => {
         PageUtils.scrollTop(this.scrollTop);
       });
     });
+  }
+
+  //optimization
+  _trackByFn(index: number, item: SmsModel) {
+    return item.id;
   }
 }
