@@ -7,5 +7,5 @@ import {Component, EventEmitter, Output} from "@angular/core";
 export class ShowMoreComponent {
 
   @Output()
-  onClickShowMore = new EventEmitter();
+  onClickShowMore = new EventEmitter<void>();
 }
