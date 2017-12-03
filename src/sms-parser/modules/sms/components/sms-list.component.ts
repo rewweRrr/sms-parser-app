@@ -47,8 +47,8 @@ export class SmsListComponent implements OnInit, OnDestroy {
     });
   }
 
-  //optimization
-  _trackByFn(index: number, item: SmsModel) {
+//optimization, see interface TrackByFunction angular.io
+  _trackByFn(index: number, item: SmsModel): any {
     return item.id;
   }
 }

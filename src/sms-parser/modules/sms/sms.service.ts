@@ -9,6 +9,8 @@ import {Subscriber} from "rxjs/Subscriber";
 @Injectable()
 export class SmsService extends ApiService {
 
+  private readonly SMS_LIST_FILE_NAME = "sms-list.json";
+
   getAllMessages(): Observable<SmsModel[]> {
     return this.getFilteredMessages({maxCount: Number.MAX_VALUE});
   }
@@ -17,21 +19,15 @@ export class SmsService extends ApiService {
     return Observable.create((subscriber: Subscriber<SmsModel[]>) => {
       let sms = window["SMS"];
 
-      let listSms: SmsModel[] = [];
+      let convertSmsCb = (data: SmsVirtualModel[]) => {
+        subscriber.next(this.convertSmsVirtualModel(data));
+        subscriber.complete();
+      };
 
       if (this.debug) {
-        this.getDataFromFile<SmsVirtualModel[]>("sms-list.json").subscribe((data: SmsVirtualModel[]) => {
-          listSms = this.convertSmsVirtualModel(data);
-          subscriber.next(listSms);
-          subscriber.complete();
-        });
+        this.getDataFromFile<SmsVirtualModel[]>(this.SMS_LIST_FILE_NAME).subscribe(convertSmsCb);
       } else {
-        sms && sms.listSMS(filter, (data: SmsVirtualModel[]) => {
-          listSms = this.convertSmsVirtualModel(data);
-          subscriber.next(listSms);
-          subscriber.complete();
-        });
-
+        sms && sms.listSMS(filter, convertSmsCb);
       }
     });
   }
