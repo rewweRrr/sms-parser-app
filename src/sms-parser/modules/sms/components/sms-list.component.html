@@ -1,6 +1,6 @@
 <top-toolbar></top-toolbar>
 
-<sms-card *ngFor="let sms of _allSmsList"
+<sms-card *ngFor="let sms of _allSmsList; trackBy: _trackByFn"
           [sms]="sms">
 </sms-card>
 
